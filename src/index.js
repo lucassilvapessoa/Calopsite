@@ -9,8 +9,9 @@
     import './Style.css'
     import Basic from'./Basic'
     import {BrowserRouter as Router,Switch,Route,Link, useHistory} from "react-router-dom";
-
+    
         const LoginForm = ()=>{
+          
                 let history = useHistory()
                 const validate = values =>{
                   const errors = {};
@@ -19,18 +20,17 @@
                   }
                   if(!values.email){
                     errors.email = "E-mail obrigatório"
-                  }   
+                  } 
                   return errors;
                 }
-                const formik = useFormik({initialValues:{ email:"", password:""},validate,
+                const formik = useFormik({initialValues:{ email:"", password:"",invalido:false},validate,
                   onSubmit:values=>{
                     const obj = {login:localStorage.getItem("login"),password:localStorage.getItem("password")}
                     if(obj.login==formik.values.email && obj.password == formik.values.password){
                       history.push("/gerenciamento")
                     }else{
-                      alert("Usúario e senha invalidos")
+                      
                     }
-                    formik.handleReset()
                   }
                 })
           return(

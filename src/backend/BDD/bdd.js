@@ -142,7 +142,7 @@ const connection =  mysql.createPool({
                    }else{
                     if(result.length>0){
                         let token = jwt.sign({email:email,senha:md5(senha)},"lucas123",{expiresIn:"1h"})
-                        callback(token)
+                        callback({id:result[0].id,token})
                     }else{
                         callback(false)
                     }
@@ -161,6 +161,8 @@ const connection =  mysql.createPool({
      Login,
     }
 }
+
+
 
 
 

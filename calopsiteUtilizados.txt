@@ -1,0 +1,13 @@
+Front end React
+hocks
+material UI
+react-router
+axios
+
+Back end Node
+json web token
+mysql
+express
+md5
+insominia
+

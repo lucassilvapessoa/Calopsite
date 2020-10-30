@@ -1,6 +1,8 @@
 const express = require("express")
 const bdd = require("./BDD/bdd")()
 const app = express()
+const cors = require("cors")
+app.use(cors())
 
 app.get("/",(req,res)=>{
     res.send("ola bem vindo")

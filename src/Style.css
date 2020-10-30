@@ -5,4 +5,28 @@ body{
     box-sizing: border-box;
     padding: 0%;
     margin: 0;
+    outline: 0;
 }
+
+#btn1,#btn2,#btn3{
+    font-size: 20px;
+    color:rgb(233, 184, 114)
+}
+#grid-container{
+    background-color: black;
+    padding: 2%;
+
+}
+#titulo{
+    font-size: 50px
+}
+
+@media(max-width:200px) {
+    #btn1,#btn2,#btn3{
+        font-size: 10px;   
+    }
+    #titulo{
+        font-size: 30px;
+    }
+  }
+  

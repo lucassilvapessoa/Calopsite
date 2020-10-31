@@ -41,7 +41,6 @@ export default function HomeTeste() {
   if(id!=undefined){
     buscarDados()
   }
-
  },[])
        return(
          <>

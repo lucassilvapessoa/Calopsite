@@ -7,6 +7,8 @@ import {Paper,Grid,Container} from '@material-ui/core'
   import passaro from '../passaro.png'
   import detalhes from '../detalhes.png'
   import HomeTeste from '../Components/HomeTeste'
+  import CadastrarGaiola from '../Components/CadastrarGaiola'
+  import CadastrarPassaro from '../Components/CadastrarPassaro'
   import {
     BrowserRouter as Router,
     Switch,
@@ -20,38 +22,38 @@ export default function BasicExample({id}) {
   const history = useHistory()
     return (
       <Router>
-        <Container style={{backgroundColor:"black",zoom:"90%"}}>
+        <Container style={{backgroundColor:"black",zoom:"70%"}}>
         <h1 style={{color:"rgb(233, 184, 114)",textAlign:"center",padding:"2%"}}>Id: {id} Seja bem vindo</h1>
         <Paper>
           <Grid container direction="row">
           <Grid item sm={2} >
           
           <Link  className="lin" to={`/${id}`}>Detalhes Gerais
-          <img  width="70%" src={detalhes}/>
+          <img  width="65%" src={detalhes}/>
           </Link>
       
           </Grid>  
               <Grid item sm={2} >
               <Link className="lin"  to="/1" >Visualizar Gastos
-              <img  width="70%" src={gastos}/>
+              <img  width="65%" src={gastos}/>
               </Link>
                   
               </Grid>
               <Grid item sm={2} >
-              <Link className="lin" to="/1" >Cadastrar Gaiola
-              <img  width="70%" src={gaiola}/>
+              <Link className="lin" to={`/CadastrarGaiola/${id}`} >Cadastrar Gaiola
+              <img  width="65%" src={gaiola}/>
               </Link>
                   
               </Grid>
               <Grid item sm={2} >
-              <Link className="lin" to="/CadastrarPassaro/1" >Cadastrar Passaro
-               <img  width="70%" src={passaro}/>
+              <Link className="lin" to={`/CadastrarPassaro/${id}`} >Cadastrar Passaro
+               <img  width="65%" src={passaro}/>
                </Link>
                  
               </Grid>
               <Grid item sm={2} >
               <Link className="lin" to="/1" >Registrar Gasto
-              <img  width="70%" src={consumo}/>
+              <img  width="65%" src={consumo}/>
               </Link>
    
               </Grid>
@@ -60,19 +62,14 @@ export default function BasicExample({id}) {
                 history.push("/")
               }} > 
                 Deslogar
-                <img width="77%" src={deslogar}/>
+                <img width="71%" src={deslogar}/>
                 </Link>
-                
               </Grid>
           </Grid>
           <Switch>
             <Route  path="/:id" exact component={HomeTeste}/>
-            <Route  path="/CadastrarPassaro/:id">
-              <h1 style={{color:"black"}} >About</h1>
-            </Route>
-            <Route  path="/CadastrarGaiola">
-              <h1 style={{color:"black"}}>Area gerenciamneto</h1>
-            </Route>
+            <Route  path="/CadastrarPassaro/:id" component={CadastrarPassaro}/>
+            <Route  path="/CadastrarGaiola/:id" component={CadastrarGaiola}/>
           </Switch>
           </Paper>
           </Container>

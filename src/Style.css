@@ -20,6 +20,17 @@ body{
 #titulo{
     font-size: 50px
 }
+.lin{
+  text-decoration: none;
+  border: 1px solid black;
+  font-size: 25px;
+display: inline-block;
+color: black;
+text-align: center;
+}
+.lin:hover{
+    background-color: rgb(233, 184, 114)
+}
 
 @media(max-width:200px) {
     #btn1,#btn2,#btn3{

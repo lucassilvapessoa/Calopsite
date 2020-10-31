@@ -25,30 +25,44 @@ export default function BasicExample({id}) {
         <Paper>
           <Grid container direction="row">
           <Grid item sm={2} >
-          <Link to="/1" >Detalhes Gerais</Link>
-                  <img style={{display:"block"}} width="40%" src={detalhes}/>
+          
+          <Link  className="lin" to={`/${id}`}>Detalhes Gerais
+          <img  width="70%" src={detalhes}/>
+          </Link>
+      
           </Grid>  
               <Grid item sm={2} >
-              <Link to="/1" >Visualizar Gastos</Link>
-                  <img style={{display:"block"}} width="40%" src={gastos}/>
+              <Link className="lin"  to="/1" >Visualizar Gastos
+              <img  width="70%" src={gastos}/>
+              </Link>
+                  
               </Grid>
               <Grid item sm={2} >
-              <Link to="/1" >Cadastrar Gaiola</Link>
-                  <img style={{display:"block"}} width="40%" src={gaiola}/>
+              <Link className="lin" to="/1" >Cadastrar Gaiola
+              <img  width="70%" src={gaiola}/>
+              </Link>
+                  
               </Grid>
               <Grid item sm={2} >
-              <Link to="/CadastrarPassaro/1" >Cadastrar Passaro</Link>
-                  <img style={{display:"block"}} width="40%" src={passaro}/>
+              <Link className="lin" to="/CadastrarPassaro/1" >Cadastrar Passaro
+               <img  width="70%" src={passaro}/>
+               </Link>
+                 
               </Grid>
               <Grid item sm={2} >
-              <Link to="/1" >Registrar Gasto</Link>
-                  <img style={{display:"block"}} width="40%" src={consumo}/>
+              <Link className="lin" to="/1" >Registrar Gasto
+              <img  width="70%" src={consumo}/>
+              </Link>
+   
               </Grid>
               <Grid item sm={2} >
-              <Link onClick={()=>{
+              <Link className="lin" onClick={()=>{
                 history.push("/")
-              }} >Deslogar</Link>
-                  <img style={{display:"block"}} width="40%" src={deslogar}/>
+              }} > 
+                Deslogar
+                <img width="77%" src={deslogar}/>
+                </Link>
+                
               </Grid>
           </Grid>
           <Switch>

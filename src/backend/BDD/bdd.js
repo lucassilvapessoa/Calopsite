@@ -128,7 +128,38 @@ const connection =  mysql.createPool({
             }))
         }
     })
-
+   }
+   function TotalPassarosGenero(id,genero,callback){
+  connection.getConnection(err=>{
+      if(err){
+          callback("Erro ao gerar conexão")
+      }else{
+          const string = "select count(passaro.id) from passaro where id_usuario = ? and sexo = ? "
+          connection.query(string,[id,genero],((err,result)=>{
+              if(err){
+                  callback("Erro ao relizar busca por genero")
+              }else{
+                callback(result)
+              }
+          }))
+      }
+  })
+   }
+   function TotalPassarosDisponiveis(idusuario,callback){
+     connection.getConnection(err=>{
+         if(err){
+             callback("Erro ao gerar conexão")
+         }else{
+             const string = "select count(passaro.id)  from passaro where id_usuario = ? and passaro.id not in (select id_passaro from gaiola)"
+             connection.query(string,idusuario,((err,result)=>{
+                 if(err){
+                     callback("Erro ao buscar total de passaros disponiveis")
+                 }else{
+                     callback(result)
+                 }
+             }))
+         }
+     })
    }
    function Login(email,senha,callback){
        connection.getConnection(err=>{
@@ -159,8 +190,11 @@ const connection =  mysql.createPool({
      GastoTotalGaiolas,
      TotalPassaros,
      Login,
+     TotalPassarosGenero,
+     TotalPassarosDisponiveis,
     }
 }
+
 
 
 

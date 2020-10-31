@@ -5,6 +5,7 @@
  import Register from '../Components/Register'
  import About from '../Components/About'
  import ManagedArea from '../Components/ManagedArea'
+ import Erro404 from '../Components/Erro404'
  import '../Style.css'
  
 
@@ -17,6 +18,7 @@ export default function Routess (){
       <Route path="/cadastrar" component={Register}/>
       <Route path="/sobre" component={About}/>
       <Route path="/gerenciamento/:id" component={ManagedArea}/>
+      <Route component={Erro404}/>
           </Switch>
         </Router>
       )

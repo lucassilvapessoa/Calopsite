@@ -56,4 +56,16 @@ app.get("/login/:email/:senha",(req,res)=>{
         res.send(resultado)
     }) 
 })
+app.get("/buscarPassaroGenero/:id/:genero",(req,res)=>{
+    const {id,genero} = req.params
+    bdd.TotalPassarosGenero(id,genero,resultado=>{
+        res.send(resultado)
+    })
+})
+app.get("/buscarPassarosDisponiveis/:id",(req,res)=>{
+    const {id} = req.params
+    bdd.TotalPassarosDisponiveis(id,resultado=>{
+        res.send(resultado)
+    })
+})
 app.listen(8089)

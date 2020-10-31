@@ -5,6 +5,8 @@ import{Container,Grid,Button,ButtonGroup} from "@material-ui/core"
 import Logo from '../Logo3.png'
 
 export default function Home(){
+  localStorage.clear()
+  console.log(localStorage)
     let history = useHistory()
     return(
       <Container  style={{zoom:"67%"}}>

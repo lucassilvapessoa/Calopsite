@@ -1,0 +1,39 @@
+drop database calopsite;
+create database calopsite;
+use calopsite;
+
+create table if not exists usuario(
+id int auto_increment primary key,
+email varchar(50),
+senha varchar(32)
+);
+
+create table if not exists passaro(
+id int auto_increment primary key,
+anilha varchar(15),
+nome varchar(30),
+especie varchar(20),
+sexo varchar(15),
+data_nascimento date,
+id_usuario int,
+foreign key(id_usuario) references usuario (id)
+);
+
+create table if not exists gaiola(
+id int not null,
+id_passaro int not null,
+foreign key(id_passaro) references passaro (id),
+primary key (id,id_passaro)
+);
+
+create table gasto(
+id int auto_increment primary key,
+tipo varchar(20),
+preco double,
+id_gaiola int,
+data_gasto date,
+foreign key(id_gaiola) references gaiola(id)
+);
+
+
+

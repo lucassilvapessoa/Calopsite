@@ -24,6 +24,8 @@ export default function LoginForm(){
         }else{
           setMatch("loader")
           setTimeout(() => {
+            let id = result.data.id
+            localStorage.setItem("id",id)
           let token = result.data.token
           localStorage.setItem("token",result.data.token)
            history.push(`/gerenciamento/${result.data.id}`)

@@ -39,7 +39,7 @@ export default function RegisterForm(){
                   errors.password = "Senha obrigatória"
 
                 }else if(values.password.length <6){
-                  errors.password = "A senha de no miínimo 6 digítos"
+                  errors.password = "A senha de no minímo 6 digítos"
                 }
                 return errors
               }
@@ -59,18 +59,18 @@ export default function RegisterForm(){
                   <form style={{width:"fit-content",margin:"0 auto",marginTop:"5%"}} onSubmit={formik.handleSubmit}>
                     <Grid direction="column" container spacing={2}>
                       <Grid item>
-                     <TextField onBlur={formik.handleBlur} label="E-mail" id="email" nome="email" type="email" onChange={formik.handleChange} value={formik.values.email}/>
-                       {formik.errors.email && formik.touched.email ? <div style={{color:"red"}}>{formik.errors.email}</div>:null}
+                     <TextField inputProps={{style:{fontSize:30}}} onBlur={formik.handleBlur} label="E-mail" id="email" nome="email" type="email" onChange={formik.handleChange} value={formik.values.email}/>
+                       {formik.errors.email && formik.touched.email ? <div style={{color:"red",fontSize:"25px"}}>{formik.errors.email}</div>:null}
                       </Grid>
                       <Grid item>
-                      <TextField onBlur={formik.handleBlur}  label="Senha" id="password" nome="password" type="password" onChange={formik.handleChange} value={formik.values.password}/>
-                    {formik.errors.password && formik.touched.password ? <div style={{color:"red"}}>{formik.errors.password}</div>:null}
+                      <TextField inputProps={{style:{fontSize:30}}} onBlur={formik.handleBlur}  label="Senha" id="password" nome="password" type="password" onChange={formik.handleChange} value={formik.values.password}/>
+                    {formik.errors.password && formik.touched.password ? <div style={{color:"red",fontSize:"25px"}}>{formik.errors.password}</div>:null}
                       </Grid>
                       <Grid item>
                         {register ? <h4 style={{color:"red"}}>Usuario e senha já existem</h4>:null}
                       </Grid>
                       <Grid item>
-                      <Button disabled={loader===true} style={{backgroundColor:"rgba(225, 187, 116, 1)",fontWeight:"bold"}}  variant="contained" fullWidth type="onSubmit">Cadastrar</Button>
+                      <Button disabled={loader===true} style={{backgroundColor:"rgba(225, 187, 116, 1)",fontWeight:"bold",fontSize:"20px"}}  variant="contained" fullWidth type="onSubmit">Cadastrar</Button>
                       </Grid>
                       <Grid item>
                         <Grid container direction="row" alignItems="center">

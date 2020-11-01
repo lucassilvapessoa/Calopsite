@@ -19,7 +19,7 @@ export default function HomeTeste() {
     const buscarPD = await axios.get(`http://localhost:8089/buscarPassarosDisponiveis/${id}`)
     const buscarPT = await axios.get(`http://localhost:8089/totalPassaros/${id}`)
     const buscarPfM = await axios.get(`http://localhost:8089/buscarPassaroGenero/${id}/masculino`)
-    const buscarPfF = await axios.get(`http://localhost:8089/buscarPassaroGenero/${id}/femea`)
+    const buscarPfF = await axios.get(`http://localhost:8089/buscarPassaroGenero/${id}/feminino`)
     const buscarPfI = await axios.get(`http://localhost:8089/buscarPassaroGenero/${id}/indefinido`)
     const passarosDisponiveis =  buscarPD.data[0]["count(passaro.id)"]
     const passarosTotal =  buscarPT.data[0]["count(passaro.id)"]
@@ -41,7 +41,7 @@ export default function HomeTeste() {
   if(id!=undefined){
     buscarDados()
   }
- },[])
+ },[id])
        return(
          <>
         {rende ?  <Grid container spacing={3} direction="row"  justify="center"  alignItems="center" style={{marginTop:"2%"}}>

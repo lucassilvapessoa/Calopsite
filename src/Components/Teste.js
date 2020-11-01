@@ -9,6 +9,8 @@ import {Paper,Grid,Container} from '@material-ui/core'
   import HomeTeste from '../Components/HomeTeste'
   import CadastrarGaiola from '../Components/CadastrarGaiola'
   import CadastrarPassaro from '../Components/CadastrarPassaro'
+  import VisualizarGastos from '../Components/VisualizarGastos'
+  import RegistrarGasto from '../Components/RegistrarGasto'
   import {
     BrowserRouter as Router,
     Switch,
@@ -29,31 +31,31 @@ export default function BasicExample({id}) {
           <Grid item sm={2} >
           
           <Link  className="lin" to={`/${id}`}>Detalhes Gerais
-          <img  width="65%" src={detalhes}/>
+          <img  width="55%" src={detalhes}/>
           </Link>
       
           </Grid>  
               <Grid item sm={2} >
-              <Link className="lin"  to="/1" >Visualizar Gastos
-              <img  width="65%" src={gastos}/>
+              <Link className="lin"  to={`/VizualizarGastos/${id}`} >Visualizar Gastos
+              <img  width="55%" src={gastos}/>
               </Link>
                   
               </Grid>
               <Grid item sm={2} >
               <Link className="lin" to={`/CadastrarGaiola/${id}`} >Cadastrar Gaiola
-              <img  width="65%" src={gaiola}/>
+              <img  width="55%" src={gaiola}/>
               </Link>
                   
               </Grid>
               <Grid item sm={2} >
               <Link className="lin" to={`/CadastrarPassaro/${id}`} >Cadastrar Passaro
-               <img  width="65%" src={passaro}/>
+               <img  width="55%" src={passaro}/>
                </Link>
                  
               </Grid>
               <Grid item sm={2} >
-              <Link className="lin" to="/1" >Registrar Gasto
-              <img  width="65%" src={consumo}/>
+              <Link className="lin" to={`/RegistrarGasto/${id}`} >Registrar Gasto
+              <img  width="55%" src={consumo}/>
               </Link>
    
               </Grid>
@@ -62,7 +64,7 @@ export default function BasicExample({id}) {
                 history.push("/")
               }} > 
                 Deslogar
-                <img width="71%" src={deslogar}/>
+                <img width="60%" src={deslogar}/>
                 </Link>
               </Grid>
           </Grid>
@@ -70,6 +72,8 @@ export default function BasicExample({id}) {
             <Route  path="/:id" exact component={HomeTeste}/>
             <Route  path="/CadastrarPassaro/:id" component={CadastrarPassaro}/>
             <Route  path="/CadastrarGaiola/:id" component={CadastrarGaiola}/>
+            <Route path="/VizualizarGastos/:id" component={VisualizarGastos}/>
+            <Route path="/RegistrarGasto/:id" component={RegistrarGasto}/>
           </Switch>
           </Paper>
           </Container>

@@ -5,9 +5,9 @@
     import './Style.css'
 
         ReactDOM.render(
-          <React.StrictMode>
+          <React.Fragment>
             <Routess/>
-          </React.StrictMode>,
+          </React.Fragment>,
           document.getElementById('root')
         );
 

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 const connection =  mysql.createPool({
     host:"localhost",
     user:"root",
-    password:"",
+    password:"lucas1997",
     database:"calopsite",
     port:"3306",
     connectionLimit:200
@@ -14,6 +14,7 @@ const connection =  mysql.createPool({
      function InserirUsuario (email,senha,callback){
          connection.getConnection((erro)=>{
             if(erro){
+                console.log(erro)
                 callback("erro ao gerar conexão")
             }else{
                const obj  = {

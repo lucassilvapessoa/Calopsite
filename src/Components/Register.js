@@ -8,8 +8,8 @@ import {ArrowBack} from '@material-ui/icons'
 export default function Register(){
     const history = useHistory()
     return(
-      <Container style={{zoom:"67%"}}>
-      <Grid container style={{backgroundColor:"black",padding:"2%"}}  alignItems="center" justify="space-between">
+      <div style={{position:"fixed",height:"100%",width:"100%"}}> 
+      <Grid container style={{backgroundColor:"black",padding:"2%",position:"absolute"}}  alignItems="center" justify="space-around">
         <Grid item>
         <Title/>
         </Grid>
@@ -19,10 +19,10 @@ export default function Register(){
       Inicio
     </IconButton>
         </Grid>
-        <div style={{width:"100%",backgroundColor:"white",marginTop:"3%",padding:"2%"}}>
+        <div style={{padding:"2%",margin:"0 auto",position:"absolute",top:"100%",left:"25%",right:"25%"}}>
         <RegisterForm/>
         </div>
       </Grid>
-    </Container>
+      </div>
     )
 }

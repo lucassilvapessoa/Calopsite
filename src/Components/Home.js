@@ -3,15 +3,15 @@ import {useHistory} from 'react-router-dom'
 import Title from '../Components/Title'
 import{Container,Grid,Button,ButtonGroup} from "@material-ui/core"
 import Logo from '../Logo3.png'
-
 export default function Home(){
   localStorage.clear()
   console.log(localStorage)
     let history = useHistory()
     return(
-      <Container  style={{zoom:"67%"}}>
-        <Grid id="grid-container"  container   alignItems="center" justify="space-around">
-          <Grid   item xl={12} sm={2}>
+      <div style={{position:"fixed",height:"100%",width:"100%"}}> 
+      <img src={Logo} style={{position:"absolute",top:"10%",width:"100%",height:"90%"}}/>
+        <Grid style={{position:"absolute",backgroundColor:"black",padding:"2%"}}  container   alignItems="center" justify="space-around">
+          <Grid  item xl={12} sm={2}>
             <Title/>
           </Grid>
           <Grid  item xl={12} sm={3}>
@@ -22,7 +22,8 @@ export default function Home(){
         </ButtonGroup>
           </Grid>
         </Grid>
-        <img width="100%" src={Logo}></img>
-      </Container>
+      </div>
+      
+
     )
 }

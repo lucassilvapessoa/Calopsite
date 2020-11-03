@@ -5,8 +5,6 @@ import {BarChart,Bar,XAxis,YAxis,Tooltip, CartesianGrid, Legend, } from 'rechart
 import {Paper,Grid,Container,IconButton,Button} from '@material-ui/core'
 import axios from 'axios'
 
-
-
 export default function HomeTeste() {
     const {id} = useParams()
     const [resultado,setQuantidadeGenero] = useState([{Macho:0,Femea:0,Indefinido:2}])

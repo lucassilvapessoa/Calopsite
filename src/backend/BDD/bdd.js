@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken")
 const connection =  mysql.createPool({
     host:"localhost",
     user:"root",
-    password:"lucas1997",
+    password:'root',
     database:"calopsite",
-    port:"3306",
+    port:"3307",
     connectionLimit:200
     }
 )

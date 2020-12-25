@@ -16,8 +16,11 @@
       import HomeTeste from '../Components/HomeTeste'
       import CadastrarGaiola from '../Components/CadastrarGaiola'
       import CadastrarPassaro from '../Components/CadastrarPassaro'
+      import CadastrarEspecie from '../Components/CadastrarEspecie'
       import VisualizarGastos from '../Components/VisualizarGastos'
       import RegistrarGasto from '../Components/RegistrarGasto'
+      import EntreEmContato from '../Components/EntreEmContato'
+      import VerificarLicenca from '../Components/VerificarLicenca'
       import {
         BrowserRouter as Router,
         Switch,
@@ -69,7 +72,7 @@
 
 
                 <Grid item sm={1} >
-                  <Link className="lin"  to={`/VizualizarGastos/${id}`} >Verificar Licença
+                  <Link className="lin"  to={`/VerificarLicenca/${id}`} >Verificar Licença
                     <img  width="55%" src={verifica} style={{marginTop:"10%"}}/>
                   </Link>
                 </Grid>
@@ -82,7 +85,7 @@
 
 
                 <Grid item sm={1} >
-                  <Link className="lin"  to={`/VizualizarGastos/${id}`} >Cadastrar Especies
+                  <Link className="lin"  to={`/CadastrarEspecie/${id}`} >Cadastrar Especies
                     <img  width="55%" src={apresentacao2} style={{marginTop:"10%"}}/>
                   </Link>
                 </Grid>
@@ -90,7 +93,7 @@
                 <Grid item sm={1} >
                   <Link className="lin"  to={`/VizualizarGastos/${id}`} >Vizualizar Especies
                     <img  width="55%" src={diagrama} style={{marginTop:"10%"}}/>
-                  </Link>
+                  </Link>                                         
                 </Grid>
 
 
@@ -102,7 +105,7 @@
               
 
                 <Grid item sm={1} >
-                  <Link className="lin"  to={`/VizualizarGastos/${id}`} >Vender Passaro
+                  <Link className="lin"  to={`/EntreEmContato/${id}`} >Entre em contato
                     <img  width="55%" src={gastos} style={{marginTop:"10%"}}/>
                   </Link>
                 </Grid>
@@ -126,6 +129,9 @@
                 <Route  path="/CadastrarGaiola/:id" component={CadastrarGaiola}/>
                 <Route path="/VizualizarGastos/:id" component={VisualizarGastos}/>
                 <Route path="/RegistrarGasto/:id" component={RegistrarGasto}/>
+                <Route path="/CadastrarEspecie/:id" component={CadastrarEspecie}/>
+                <Route path="/VerificarLicenca/:id" component={VerificarLicenca}/>
+                <Route path="/EntreEmContato/:id" component={EntreEmContato}/>
               </Switch>
               </Paper>
 
@@ -135,7 +141,7 @@
             
           
           </Router>
-        );
+        );                                                              
       }
 
       

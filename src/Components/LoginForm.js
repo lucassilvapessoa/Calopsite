@@ -59,7 +59,7 @@ return(
         {formik.errors.email && formik.touched.email ?<div style={{color:"red",fontSize:"25px"}}> {formik.errors.email}</div>:null}
          </Grid>
          <Grid item>
-         <TextField onBlur={formik.handleBlur} style={{width:"100%"}} label={ <Typography variant="headline" component="h3"> Senha </Typography>} id="password" nome="password" type="password" onChange={formik.handleChange} value={formik.values.password}/>
+         <TextField onBlur={formik.handleBlur} style={{width:"100%",fontSize:30}} label={ <Typography variant="headline" component="h3"> Senha </Typography>} id="password" nome="password" type="password" onChange={formik.handleChange} value={formik.values.password}/>
          {formik.touched.password &&  formik.errors.password ? <div style={{color:"red",fontSize:"25px"}}>{formik.errors.password}</div> : null}
          </Grid>
          <Grid item>

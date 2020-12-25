@@ -1,4 +1,4 @@
-     import axios from 'axios'
+    import axios from 'axios'
     import  {useParams} from 'react-router-dom'
     import {Formik,useFormik} from 'formik'
     import { TextField,Container,Grid,MenuItem,InputLabel,Typography,Button} from '@material-ui/core'
@@ -9,14 +9,19 @@
     export default function CadastrarPassaro(){
         const {id}  = useParams()
          const[valores,setValores] = useState({nome:"",anilha:"",sexo:"",data_nascimento:""})
+         const[especies,setEspecies] = useState([]);
          useEffect(()=>{
           async function cadastrarPassaro(){
-              const resultado = await axios.post(`http://localhost:8089/inserirPassaro/${valores.anilha}/${valores.nome}/${valores.especie}/${valores.sexo}/${valores.data_nascimento}/${id}`)
+            const teste = await axios.get(`https://pokeapi.co/api/v2/pokemon`)
+            const options = teste.data.results.map(d => ({
+                "value" : d.name,
+                "label" : d.name
+              }))
+              setEspecies(options)
+              const resultado = await axios.post(`http://localhost:8089/inserirPassaro/${valores.anilha}/${valores.nome}/${valores.especie}/${valores.sexo}/${valores.data_nascimento}/${id}`)   
           }
           cadastrarPassaro()
-
          },[valores])
-       
 
         const validate = values=>{  
             const errors = {}
@@ -39,6 +44,7 @@
             { value: 'feminino', label: 'Femea' },
             { value: 'indefinido', label: 'Indefinido' }
         ];
+
 
         const formik = useFormik({initialValues:{
             nome:"",
@@ -65,8 +71,8 @@
                             <TextField id="nome" onChange={formik.handleChange} value={formik.values.nome} label={<Typography variant="headline" component="h3">Nome</Typography>}  inputProps={{style:{fontSize:30}}}/>
                         </Grid>
                         <Grid item>
-                            <TextField id="especie" onChange={formik.handleChange} value={formik.values.especie} inputProps={{style:{fontSize:30}}}  label={<Typography variant="headline" component="h3">Especie</Typography>}/>
-                           
+                        <Select id="especie"  onChange={valor=> formik.setFieldValue('especie',valor.value)}
+                             placeholder={<Typography variant="headline" component="h3">Especie</Typography>} options={especies}/>          
                         </Grid>
                         <Grid item >
                             <Select id="sexo"  onChange={valor=> formik.setFieldValue('sexo',valor.value)}

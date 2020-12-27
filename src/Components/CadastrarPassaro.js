@@ -6,11 +6,15 @@
     import {Calendar} from '@material-ui/pickers'
     import Select from 'react-select'
     import { useState,useEffect } from 'react'
+
     export default function CadastrarPassaro(){
         const {id}  = useParams()
          const[valores,setValores] = useState({nome:"",anilha:"",sexo:"",data_nascimento:""})
+
          const[especies,setEspecies] = useState([]);
+
          useEffect(()=>{
+
           async function cadastrarPassaro(){
             const teste = await axios.get(`https://pokeapi.co/api/v2/pokemon`)
             const options = teste.data.results.map(d => ({

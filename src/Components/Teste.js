@@ -21,6 +21,7 @@
       import RegistrarGasto from '../Components/RegistrarGasto'
       import EntreEmContato from '../Components/EntreEmContato'
       import VerificarLicenca from '../Components/VerificarLicenca'
+      import VisualizarEspecies from '../Components/VizualizarEspecies'
       import {
         BrowserRouter as Router,
         Switch,
@@ -91,7 +92,7 @@
                 </Grid>
 
                 <Grid item sm={1} >
-                  <Link className="lin"  to={`/VizualizarGastos/${id}`} >Vizualizar Especies
+                  <Link className="lin"  to={`/VizualizarEspecies/${id}`} >Vizualizar Especies
                     <img  width="55%" src={diagrama} style={{marginTop:"10%"}}/>
                   </Link>                                         
                 </Grid>
@@ -132,6 +133,8 @@
                 <Route path="/CadastrarEspecie/:id" component={CadastrarEspecie}/>
                 <Route path="/VerificarLicenca/:id" component={VerificarLicenca}/>
                 <Route path="/EntreEmContato/:id" component={EntreEmContato}/>
+                <Route path="/VizualizarEspecies/:id" component={VisualizarEspecies}/>
+
               </Switch>
               </Paper>
 

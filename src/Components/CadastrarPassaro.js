@@ -14,7 +14,6 @@
          const[especies,setEspecies] = useState([]);
 
          useEffect(()=>{
-
           async function cadastrarPassaro(){
             const teste = await axios.get(`https://pokeapi.co/api/v2/pokemon`)
             const options = teste.data.results.map(d => ({

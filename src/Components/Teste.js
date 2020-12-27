@@ -60,7 +60,7 @@
 
 
                   <Grid item sm={1} >
-                    <Link className="lin" to={`/RegistrarGasto/${id}`} >Registrar Gasto 
+                    <Link className="lin" to={`/RegistrarGasto/${id}`} >Registrar Gasto Gaiola 
                       <img  width="54%" src={consumo} style={{marginTop:"10%"}}/>
                     </Link>
                   </Grid>
@@ -117,12 +117,10 @@
                     history.push("/")
                   }} > 
                     Sair
-                    <img width="80%" src={deslog} style={{marginTop:"10%"}} />
+                    <img width="75%" src={deslog} style={{marginTop:"10%"}} />
                       </Link>
                   </Grid>
               </Grid>
-
-
 
               <Switch>
                 <Route  path="/:id" exact component={HomeTeste}/>

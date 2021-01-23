@@ -7,28 +7,27 @@ import {useState,useEffect} from 'react'
 
 export default function RegisterForm(){
     const history = useHistory()
-          const [pronto,setPronto] = useState({email:"",password:""})
+          const [pronto,setPronto] = useState({email:"",password:"",name:""})
           const[register,setRegister] = useState(false)
           const [loader,setLoader] = useState(false)
           useEffect(()=>{
             if(pronto.email.length>0){
               registrar()
             }
-            async function registrar(){
-               let resultado = await axios.post(`http://localhost:8089/cadastrar/${pronto.email}/${pronto.password}`)
-               if(resultado.data=="Escolha usuario e senha diferentes"){
-                 setRegister(true)
-                 setTimeout(()=>{
-                  setRegister(false)
-                 },3000)
-               }else{
-                 setLoader(true)
-                setTimeout(()=>{
-                 history.push("/")
-                },4000)
-               }
-            }
-           },[pronto])
+              function registrar(){
+              axios.post(`http://localhost:8080/users/new?name=${pronto.name}&email=${pronto.email}&password=${pronto.password}`).then((res)=> 
+              {setLoader(true)
+                console.log(res.data)
+                history.push("/")
+               }).catch((err)=>{
+                setRegister(true)
+              setTimeout(()=>{
+               setRegister(false)
+              },3000)
+              })
+             }
+            },[pronto])
+          
           
               const validate = values =>{
                 const errors = {}
@@ -40,6 +39,8 @@ export default function RegisterForm(){
 
                 }else if(values.password.length <6){
                   errors.password = "A senha de no minímo 6 digítos"
+                }else if(values.name.length == 0){
+                  errors.name = "O nome é obrigátorio"
                 }
                 return errors
               }
@@ -47,9 +48,10 @@ export default function RegisterForm(){
                 initialValues:{
                   email:"",
                   password:"",
+                  name:""
                 },validate,
                 onSubmit:values=>{
-                  setPronto({email:values.email,password:values.password})
+                  setPronto({email:values.email,password:values.password,name:values.name})
                 }
               })
               return(
@@ -65,6 +67,10 @@ export default function RegisterForm(){
                       <Grid item>
                       <TextField inputProps={{style:{fontSize:30}}} onBlur={formik.handleBlur}  label="Senha" id="password" nome="password" type="password" onChange={formik.handleChange} value={formik.values.password}/>
                     {formik.errors.password && formik.touched.password ? <div style={{color:"red",fontSize:"25px"}}>{formik.errors.password}</div>:null}
+                      </Grid>
+                      <Grid item>
+                      <TextField inputProps={{style:{fontSize:30}}} onBlur={formik.handleBlur}  label="Nome" id="name" nome="name" type="text" onChange={formik.handleChange} value={formik.values.name}/>
+                    {formik.errors.name && formik.touched.name ? <div style={{color:"red",fontSize:"25px"}}>{formik.errors.name}</div>:null}
                       </Grid>
                       <Grid item>
                         {register ? <h4 style={{color:"red"}}>Usuario e senha já existem</h4>:null}

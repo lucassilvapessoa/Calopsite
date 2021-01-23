@@ -15,7 +15,35 @@ export default function LoginForm(){
         logar()
       }
       async function logar(){
-        const result = await axios.get(`http://localhost:8089/login/${pronto.email}/${pronto.password}`)
+        const url = "http://localhost:8080/login"
+        const data = {email: pronto.email,password:pronto.password}
+        const headers = {
+          "Content-Type": "application/json",
+    
+      }
+        const result = await axios.post(url, data, headers)
+        if(result){
+        const url = "http://localhost:8080/users/logged"
+       const dados = await axios.get(url,{params:{},headers:{
+        'Authorization': result.headers.authorization
+       }})
+       if(dados){
+        setMatch("loader")
+        setTimeout(() => {
+          let id = dados.data.id
+          localStorage.setItem("id",id)
+          history.push(`/gerenciamento/${id}`)
+          localStorage.setItem("token",result.headers.authorization)
+        }, 3000);
+       }else{
+        setMatch(false)
+        setTimeout(()=>{
+         setMatch(true)
+        },3000)
+       }
+      }
+            
+        /*
         if(result.data==false){
           setMatch(false)
           setTimeout(()=>{
@@ -30,8 +58,8 @@ export default function LoginForm(){
           localStorage.setItem("token",result.data.token)
            history.push(`/gerenciamento/${result.data.id}`)
           }, 3000);
-          
         }
+        */
       }
      },[pronto])  
       const validate = values =>{

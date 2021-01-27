@@ -9,17 +9,32 @@ import { useState,useEffect } from 'react'
 
 export default function CadastrarGaiola(){
    const [cracha,setCracha] = useState("");
+   const[pronto,setPronto] = useState(false);
 
-   const {id} = useParams()
-  function enviarCadastro(){
-    if(cracha!=""){
-      alert("PRONTO PARA ENVIAR");
-    }
-  }
-    
+
+   function enviarCadastro(){
+     setPronto(true);
+   }
+   
+  const {id} = useParams()
+  useEffect(()=>{
+  if(cracha!=""){
+    const url = `localhost:8080/vivarium/new?description="santos"`
+    axios.post(url,{params:{},headers:{
+      'Authorization': localStorage.get("token")
+     }}).then((res)=>{
+        console.log(res)
+    }).catch((err)=>{
+      console.log(err)
+    })
+   
+  }  
+  },[pronto])
+
+
     return (
           <Container style={{width:"fit-content",marginTop:"2%"}}>
- <h1> {id} : Cadastrar Gaiola</h1>
+ <h1>  Cadastrar Gaiola</h1>
  <br></br>
  <Grid direction="column" container spacing={4}>
                     <Grid item >

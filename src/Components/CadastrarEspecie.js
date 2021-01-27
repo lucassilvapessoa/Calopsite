@@ -10,7 +10,7 @@ import { useState,useEffect } from 'react'
 
 export default function CadastrarGaiola(){
    const {id} = useParams()
-   const[valores,setValores] = useState({especie:"",valor:""})
+   const[valores,setValores] = useState({especie:"",valor:"",descricao:""})
    useEffect (()=>{
        alert("Entrei aqui tudo pronto para enviar")
    },valores)
@@ -23,15 +23,19 @@ export default function CadastrarGaiola(){
       if(!values.valor){
           errors.valor = "valor é obrigatório"
       }
+      if(!values.descricao){
+          errors.valor = "descricao é obrigatório"
+      }
    
       return errors
   }
   const formik = useFormik({initialValues:{
    nome:"",
    valor:"",
+   descricao:""
    },validate,
    onSubmit:values=>{
-       setValores({especie:values.especie,valor:values.valor})
+       setValores({especie:values.especie,valor:values.valor,descricao:values.descricao})
        alert(JSON.stringify(values, null, 2));
    }
 })
@@ -48,7 +52,11 @@ export default function CadastrarGaiola(){
                         </Grid>
 
                         <Grid item >
-                            <TextField id="especie" onChange={formik.handleChange} value={formik.values.valor} label={ <Typography variant="headline" component="h3"> Valor </Typography>}  inputProps={{style:{fontSize:30}}}/>
+                            <TextField id="valor" onChange={formik.handleChange} value={formik.values.valor} label={ <Typography variant="headline" component="h3"> Valor </Typography>}  inputProps={{style:{fontSize:30}}}/>
+                        </Grid>
+
+                        <Grid item >
+                            <TextField id="descricao" onChange={formik.handleChange} value={formik.values.descricao} label={ <Typography variant="headline" component="h3"> Descricao </Typography>}  inputProps={{style:{fontSize:30}}}/>
                         </Grid>
                      
                         <Grid item>

@@ -11,24 +11,39 @@ export default function  VizualizarEspecies () {
     const[especies,setEspecies] = useState([])
     const [opcaoEscolhida,setOpcao] = useState("")
     const[valores,setValores] = useState({id:"",descricao:"",valor:""})
+    const [dados,setDados] = useState([])
 
     useEffect(()=>{
-        async function cadastrarPassaro(){
-          const teste = await axios.get(`https://pokeapi.co/api/v2/pokemon`)
-          const options = teste.data.results.map(d => ({
-            "value" : d.name,
-            "label" : d.name
-          }))
-          setEspecies(options)
-        }
-        cadastrarPassaro()
+          const url = `http://localhost:8080/mutations/user`
+          fetch(url,{
+            method:'get',headers:new Headers({
+              'Authorization':localStorage.getItem("token")
+            })
+          }).then((res)=>{
+             res.json().then((dat)=>{
+              const options = dat.map(d => ({
+            "value" : d.id,
+            "label" : d.mutation
+          }))    
+         setEspecies(options)
+         setDados([...dados,dat])
+      
+             }).catch((err)=>{
+               console.log(err)
+             })
+            }).catch((err)=>{
+              console.log(err)
+            })
+         
+         
        },[])
 
        useEffect(()=>{
         if(opcaoEscolhida!= ""){
             async function VizualizarEspecie(){
-                const teste = await axios.get(`https://pokeapi.co/api/v2/pokemon/${opcaoEscolhida}`)
-               setValores({...valores,id:teste.data.order})
+               const obj = dados[0].filter(x=> x.id == opcaoEscolhida)
+                console.log(obj)
+               setValores({...valores,valor:obj[0].base_price,id:obj[0].id,descricao:obj[0].mutation})
             }
             VizualizarEspecie()
         }

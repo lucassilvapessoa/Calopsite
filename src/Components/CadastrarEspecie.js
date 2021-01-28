@@ -12,8 +12,18 @@ export default function CadastrarGaiola(){
    const {id} = useParams()
    const[valores,setValores] = useState({especie:"",valor:"",descricao:""})
    useEffect (()=>{
-       alert("Entrei aqui tudo pronto para enviar")
-   },valores)
+       if(valores.valor !="" && valores.descricao != "" && valores.especie != ""){
+        fetch(`http://localhost:8080/mutations/new?description=${valores.descricao}&price=${valores.valor}&mutation=${valores.especie}`,{
+            method:'post',headers:new Headers({
+              'Authorization':localStorage.getItem("token")
+            })
+          }).then((res)=>{
+            alert("Especie cadastrada com sucesso")
+          }).catch((err)=>{
+            alert("Erro ao cadastrar especie")
+          })
+         } 
+   },[valores])
 
    const validate = values=>{  
       const errors = {}

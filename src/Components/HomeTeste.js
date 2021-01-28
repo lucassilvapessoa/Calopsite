@@ -11,8 +11,55 @@ export default function HomeTeste() {
   const valores=[{Macho:resultado.Macho,Femea:resultado.Femea,Indefinido:resultado.Indefinido}]
   const [pd,setPd] = useState(0)
   const [pt,setPt] = useState(0)
+  const[mt,setMt] = useState(0)
   const [rende,setRend] = useState(0)
+  const [dados,setDados] = useState([])
+
+
  useEffect(()=>{
+  const url = `http://localhost:8080/birds`
+          fetch(url,{
+            method:'get',headers:new Headers({
+              'Authorization':localStorage.getItem("token")
+            })
+          }).then((res)=>{
+             res.json().then((dat)=>{
+               console.log(dat)
+              for(let i=0; i<dat.length; i++){
+                   
+              }
+              setQuantidadeGenero(prevState=>{
+                return {
+                  Indefinido:5,
+                  Macho:5,
+                  Femea:10
+                }
+              })
+              setPt(dat.length)
+              setPd(dat.length)
+            
+             }).catch((err)=>{
+               console.log(err)
+             })
+
+             const url2 = `http://localhost:8080/vivarium/user`
+             fetch(url2,{
+              method:'get',headers:new Headers({
+                'Authorization':localStorage.getItem("token")
+              })
+            }).then((res)=>{
+               res.json().then((dat)=>{
+                setMt(dat.length)
+              
+                
+        })
+      }).catch((err)=>{
+        console.log(err)
+      })
+      setRend(1)
+    })             
+
+  /*
   async function buscarDados(){
     const buscarPD = await axios.get(`http://localhost:8089/buscarPassarosDisponiveis/${id}`)
     const buscarPT = await axios.get(`http://localhost:8089/totalPassaros/${id}`)
@@ -39,6 +86,8 @@ export default function HomeTeste() {
   if(id!=undefined){
     buscarDados()
   }
+
+  */
  },[id])
        return(
          <>
@@ -67,8 +116,8 @@ export default function HomeTeste() {
         </Grid>
         <Grid item xs={4} >
               <Paper elevation={8} style={{padding:"2%"}}>
-              <h2>Matrizes Disponíveis</h2>
-               <h3>São:  0 ave(s)</h3>
+              <h2>Gaiolas disponiveis</h2>
+               <h3>São:  {mt} gaiola(s)</h3>
               </Paper>
         </Grid>
         <Grid item xs={8} >

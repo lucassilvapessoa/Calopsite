@@ -73,7 +73,7 @@
 
 
                 <Grid item sm={1} >
-                  <Link className="lin"  to={`/VerificarLicenca/${id}`} >Verificar Licença
+                  <Link className="lin"  to={`/VerificarLicenca/${id}`} >CadastrarInsumo
                     <img  width="55%" src={verifica} style={{marginTop:"10%"}}/>
                   </Link>
                 </Grid>

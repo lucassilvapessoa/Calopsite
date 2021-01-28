@@ -10,10 +10,10 @@
     export default function CadastrarPassaro(){
 
         /*
-http://localhost:8080/birds/new?mutation=1&vivarium=2&gender=male
+
         */
         const {id}  = useParams()
-         const[valores,setValores] = useState({sexo:""})
+         const[valores,setValores] = useState({sexo:"",especie:"",gaiola:""})
 
          const[especies,setEspecies] = useState([]);
          const[gaiolas,setGaiolas] = useState([]);
@@ -63,8 +63,23 @@ http://localhost:8080/birds/new?mutation=1&vivarium=2&gender=male
          
           
          },[])
-        
 
+         
+         useEffect (()=>{
+          if(valores.sexo !="" && valores.especie != "" && valores.gaiola != ""){
+           fetch(`http://localhost:8080/birds/new?mutation=${valores.especie}&vivarium=${valores.gaiola}&gender=${valores.sexo}`,{
+               method:'post',headers:new Headers({
+                 'Authorization':localStorage.getItem("token")
+               })
+             }).then((res)=>{
+               alert("Passaro cadastrado com sucesso")
+             }).catch((err)=>{
+               alert("Erro ao cadastrar passaro")
+             })
+            } 
+      },[valores])
+  
+       
         const validate = values=>{  
             const errors = {}
             

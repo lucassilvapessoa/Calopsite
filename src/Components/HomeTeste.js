@@ -24,15 +24,23 @@ export default function HomeTeste() {
             })
           }).then((res)=>{
              res.json().then((dat)=>{
-               console.log(dat)
+               let male = 0;
+               let female = 0;
+               let indefinido = 0;
               for(let i=0; i<dat.length; i++){
-                   
+                   if(dat[i].gender === "MALE"){
+                     male++
+                   }else if(dat[i].gender === "FEMALE"){
+                     female++
+                   }else{
+                     indefinido++;
+                   }
               }
               setQuantidadeGenero(prevState=>{
                 return {
-                  Indefinido:5,
-                  Macho:5,
-                  Femea:10
+                  Indefinido:indefinido,
+                  Macho:male,
+                  Femea:female
                 }
               })
               setPt(dat.length)
